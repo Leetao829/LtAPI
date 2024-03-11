@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: ltapi
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/ltapi
+    username: root
+    password: "032700"
+  #设置session过期时间
+  session:
+    timeout: 86400
+    store-type: redis
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        domain:
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete #全局逻辑删除
+      logic-delete-value: 1 #删除为1
+      logic-not-delete-value: 0 #未删除为0
+ltapi:
+  client:
+    access-key: leetao
+    secret-key: abcdefg
