@@ -13,5 +13,7 @@
 5.**前台系统**:前台展示可以调用的接口，以及对各个接口的详细说明<br>
 <img src="images/系统架构.jpg">
 
+## 后端技术栈
+SpringBoot+Mysql+MybatisPlus+Swagger(接口文档)+Spring Cloud Gateway+Dubbo+Hutool、Gson等工具库
 
 
