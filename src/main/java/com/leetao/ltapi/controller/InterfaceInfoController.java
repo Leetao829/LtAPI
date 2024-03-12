@@ -118,7 +118,7 @@ public class InterfaceInfoController {
 		}
 		InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
 		if(oldInterfaceInfo == null){
-			throw new BusinessException(ErrorCode.SYSTEM_ERROR,"用户不存在");
+			throw new BusinessException(ErrorCode.SYSTEM_ERROR,"接口不存在");
 		}
 		if(!userService.isAdmin(loginUser) && !oldInterfaceInfo.getUserId().equals(String.valueOf(loginUser.getId()))){
 			throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -131,8 +131,8 @@ public class InterfaceInfoController {
 	}
 
 	@GetMapping("/get")
-	public BaseResponse<InterfaceInfo> getById(long id){
-		if(id <= 0){
+	public BaseResponse<InterfaceInfo> getById(Long id){
+		if(id == null || id <= 0){
 			throw new BusinessException(ErrorCode.PARAMS_ERROR);
 		}
 		InterfaceInfo interfaceInfo = interfaceInfoService.getById(id);
