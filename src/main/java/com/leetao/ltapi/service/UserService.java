@@ -1,6 +1,7 @@
 package com.leetao.ltapi.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.leetao.ltapi.common.comm.IdRequest;
 import com.leetao.ltapi.common.model.domain.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,6 +79,14 @@ public interface UserService extends IService<User> {
 	 * @return  是否为管理员
 	 */
 	boolean isAdmin(User loginUser);
+
+	/**
+	 * 用户申请接口
+	 * @param interfaceId 接口id
+	 * @param loginUser  登录用户
+	 * @return 返回是否申请成功
+	 */
+	boolean applyForInterface(long interfaceId,User loginUser);
 
 
 

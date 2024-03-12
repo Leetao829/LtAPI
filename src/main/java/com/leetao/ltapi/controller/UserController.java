@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.leetao.ltapi.common.BaseResponse;
 import com.leetao.ltapi.common.ErrorCode;
 import com.leetao.ltapi.common.ResultUtils;
+import com.leetao.ltapi.common.comm.IdRequest;
 import com.leetao.ltapi.common.model.domain.User;
 import com.leetao.ltapi.common.model.request.UserLoginRequest;
 import com.leetao.ltapi.common.model.request.UserRegisterRequest;
@@ -163,6 +164,16 @@ public class UserController {
 			log.error("redis set key error",e);
 		}
 		return ResultUtils.success(userPage);
+	}
+
+	@PostMapping("/apply")
+	public BaseResponse<Boolean> applyForInterface(Long interfaceInfoId,HttpServletRequest request){
+		if(interfaceInfoId == null || interfaceInfoId <= 0){
+			throw new BusinessException(ErrorCode.PARAMS_ERROR);
+		}
+		User loginUser = userService.getLoginUser(request);
+		boolean res = userService.applyForInterface(interfaceInfoId, loginUser);
+		return ResultUtils.success(res);
 	}
 
 }

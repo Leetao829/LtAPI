@@ -7,8 +7,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.leetao.ltapi.common.ErrorCode;
+import com.leetao.ltapi.common.model.domain.InterfaceInfo;
 import com.leetao.ltapi.common.model.domain.User;
+import com.leetao.ltapi.common.model.domain.UserInterfaceInfo;
 import com.leetao.ltapi.exception.BusinessException;
+import com.leetao.ltapi.mapper.InterfaceInfoMapper;
+import com.leetao.ltapi.mapper.UserInterfaceInfoMapper;
+import com.leetao.ltapi.service.UserInterfaceInfoService;
 import com.leetao.ltapi.service.UserService;
 import com.leetao.ltapi.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static com.leetao.ltapi.constant.InterfaceApplyNum.INTERFACE_APPLY_NUM;
 import static com.leetao.ltapi.constant.UserConstants.ADMIN_ROLE;
 import static com.leetao.ltapi.constant.UserConstants.USER_LOGIN_STATE;
 
@@ -41,6 +47,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 	private static final String  SALT = "taoLi";
 	@Resource
 	private UserMapper userMapper;
+
+	@Resource
+	private InterfaceInfoMapper interfaceInfoMapper;
+
+	@Resource
+	private UserInterfaceInfoMapper userInterfaceInfoMapper;
 
 	@Override
 	public long userRegister(String userAccount, String userPassword, String checkPassword,String planetCode) {
@@ -259,6 +271,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 		return loginUser != null && loginUser.getUserRole() == ADMIN_ROLE;
 	}
 
+	@Override
+	public boolean applyForInterface(long interfaceId, User loginUser) {
+		Long userId = loginUser.getId();
+		if(userId == null || userId <= 0){
+			throw new BusinessException(ErrorCode.PARAMS_ERROR);
+		}
+		//判断接口是否存在
+		QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("id",interfaceId);
+		Long res = interfaceInfoMapper.selectCount(queryWrapper);
+		if(res == null || res <= 0){
+			throw new BusinessException(ErrorCode.PARAMS_ERROR,"接口不存在");
+		}
+		//判断该用户是否已经开通接口
+		QueryWrapper<UserInterfaceInfo> queryWrapper1 = new QueryWrapper<>();
+		queryWrapper1.eq("userId",userId);
+		queryWrapper1.eq("interfaceInfoId",interfaceId);
+		Long count = userInterfaceInfoMapper.selectCount(queryWrapper1);
+		if(count > 0){
+			throw new BusinessException(ErrorCode.PARAMS_ERROR,"该接口已经开通，请使用");
+		}
+		UserInterfaceInfo userInterfaceInfo = new UserInterfaceInfo();
+		userInterfaceInfo.setUserId(userId);
+		userInterfaceInfo.setInterfaceInfoId(interfaceId);
+		userInterfaceInfo.setLeftNum(INTERFACE_APPLY_NUM);
+		userInterfaceInfo.setTotalNum(0);
+		int save = userInterfaceInfoMapper.insert(userInterfaceInfo);
+		if(save <= 0){
+			throw new BusinessException(ErrorCode.SYSTEM_ERROR,"插入异常");
+		}
+		return true;
+	}
 
 }
 
