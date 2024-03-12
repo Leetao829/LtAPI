@@ -139,7 +139,7 @@
 		<dependency>
 			<groupId>com.leetao</groupId>
 			<artifactId>LtApi-common</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 

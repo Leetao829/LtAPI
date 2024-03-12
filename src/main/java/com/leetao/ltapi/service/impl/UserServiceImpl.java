@@ -176,8 +176,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 		safetyUser.setPlanetCode(originUser.getPlanetCode());
 		safetyUser.setTags(originUser.getTags());
 		safetyUser.setProfile(originUser.getProfile());
-		safetyUser.setAccessKey(originUser.getAccessKey());
-		safetyUser.setSecretKey(originUser.getSecretKey());
 		return safetyUser;
 	}
 
