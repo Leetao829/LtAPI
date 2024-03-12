@@ -4,14 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
 import com.leetao.ltapi.annotation.AuthCheck;
 import com.leetao.ltapi.common.*;
+import com.leetao.ltapi.common.model.domain.InterfaceInfo;
+import com.leetao.ltapi.common.model.domain.User;
+import com.leetao.ltapi.common.model.dto.interfaceinfo.InterfaceInfoAddRequest;
+import com.leetao.ltapi.common.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
+import com.leetao.ltapi.common.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
+import com.leetao.ltapi.common.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
+import com.leetao.ltapi.common.model.enums.InterfaceInfoStatusEnum;
 import com.leetao.ltapi.exception.BusinessException;
-import com.leetao.ltapi.model.domain.InterfaceInfo;
-import com.leetao.ltapi.model.domain.User;
-import com.leetao.ltapi.model.dto.interfaceinfo.InterfaceInfoAddRequest;
-import com.leetao.ltapi.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
-import com.leetao.ltapi.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
-import com.leetao.ltapi.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-import com.leetao.ltapi.model.enums.InterfaceInfoStatusEnum;
 import com.leetao.ltapi.service.InterfaceInfoService;
 import com.leetao.ltapi.service.UserService;
 import com.leetao.ltapiclientsdk.client.LtApiClient;
@@ -239,7 +239,7 @@ public class InterfaceInfoController {
 	 * @return 返回接口调用是否成功
 	 */
 	@PostMapping("/invoke")
-	public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest,HttpServletRequest request){
+	public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest, HttpServletRequest request){
 		if(interfaceInfoInvokeRequest == null){
 			throw new BusinessException(ErrorCode.PARAMS_ERROR);
 		}

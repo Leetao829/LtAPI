@@ -2,7 +2,7 @@ package com.leetao.ltapi.job;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.leetao.ltapi.model.domain.User;
+import com.leetao.ltapi.common.model.domain.User;
 import com.leetao.ltapi.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;

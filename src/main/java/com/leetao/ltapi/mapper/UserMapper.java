@@ -1,7 +1,6 @@
 package com.leetao.ltapi.mapper;
-
-import com.leetao.ltapi.model.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.leetao.ltapi.common.model.domain.User;
 
 /**
 * @author taoLi

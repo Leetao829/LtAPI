@@ -1,7 +1,7 @@
 package com.leetao.ltapi.service;
 
-import com.leetao.ltapi.model.domain.InterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.leetao.ltapi.common.model.domain.InterfaceInfo;
 
 /**
 * @author taoLi

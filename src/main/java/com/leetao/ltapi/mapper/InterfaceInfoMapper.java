@@ -1,7 +1,7 @@
 package com.leetao.ltapi.mapper;
 
-import com.leetao.ltapi.model.domain.InterfaceInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.leetao.ltapi.common.model.domain.InterfaceInfo;
 
 /**
 * @author taoLi

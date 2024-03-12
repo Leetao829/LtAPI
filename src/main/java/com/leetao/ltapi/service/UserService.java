@@ -1,7 +1,7 @@
 package com.leetao.ltapi.service;
 
-import com.leetao.ltapi.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.leetao.ltapi.common.model.domain.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

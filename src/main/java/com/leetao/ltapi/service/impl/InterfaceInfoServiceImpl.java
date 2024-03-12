@@ -2,8 +2,8 @@ package com.leetao.ltapi.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.leetao.ltapi.common.ErrorCode;
+import com.leetao.ltapi.common.model.domain.InterfaceInfo;
 import com.leetao.ltapi.exception.BusinessException;
-import com.leetao.ltapi.model.domain.InterfaceInfo;
 import com.leetao.ltapi.service.InterfaceInfoService;
 import com.leetao.ltapi.mapper.InterfaceInfoMapper;
 import org.apache.commons.lang3.StringUtils;

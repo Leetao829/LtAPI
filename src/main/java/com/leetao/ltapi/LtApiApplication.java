@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class LtApiApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(LtApiApplication.class, args);
 	}
 

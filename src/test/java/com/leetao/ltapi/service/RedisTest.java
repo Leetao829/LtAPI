@@ -1,6 +1,6 @@
 package com.leetao.ltapi.service;
 
-import com.leetao.ltapi.model.domain.User;
+import com.leetao.ltapi.common.model.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;

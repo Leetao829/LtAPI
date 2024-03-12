@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leetao.ltapi.mapper.UserInterfaceInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.leetao.ltapi.model.domain.UserInterfaceInfo">
+    <resultMap id="BaseResultMap" type="com.leetao.ltapi.common.model.domain.UserInterfaceInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="userId" jdbcType="BIGINT"/>
             <result property="interfaceInfoId" column="interfaceInfoId" jdbcType="BIGINT"/>

@@ -1,6 +1,7 @@
 package com.leetao.ltapi.once;
 
-import com.leetao.ltapi.model.domain.User;
+
+import com.leetao.ltapi.common.model.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;

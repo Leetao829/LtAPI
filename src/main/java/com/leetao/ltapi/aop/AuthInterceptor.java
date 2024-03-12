@@ -2,13 +2,12 @@ package com.leetao.ltapi.aop;
 
 import com.leetao.ltapi.annotation.AuthCheck;
 import com.leetao.ltapi.common.ErrorCode;
+import com.leetao.ltapi.common.model.domain.User;
 import com.leetao.ltapi.constant.UserConstants;
 import com.leetao.ltapi.exception.BusinessException;
-import com.leetao.ltapi.model.domain.User;
 import com.leetao.ltapi.service.UserService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.tomcat.util.buf.ByteChunk;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
