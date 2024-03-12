@@ -253,11 +253,13 @@ public class InterfaceInfoController {
 			throw new BusinessException(ErrorCode.PARAMS_ERROR,"该接口不存在");
 		}
 		User loginUser = userService.getLoginUser(request);
-		//获取ak,sk
+		//获取ak,sk以及调用接口的url
 		String accessKey = loginUser.getAccessKey();
 		String secretKey = loginUser.getSecretKey();
+		String url = oldInterfaceInfo.getUrl();
+
 		//向后端发送请求
-		LtApiClient ltApiClient = new LtApiClient(accessKey, secretKey);
+		LtApiClient ltApiClient = new LtApiClient(accessKey, secretKey,url);
 		Gson gson = new Gson();
 		String userRequestParams = interfaceInfoInvokeRequest.getUserRequestParams();
 		com.leetao.ltapiclientsdk.model.domain.User user = gson.fromJson(userRequestParams, com.leetao.ltapiclientsdk.model.domain.User.class);
